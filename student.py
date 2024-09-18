@@ -14,7 +14,7 @@ import string
 import os  # New import for Render deployment
 
 # Initialize the Flask application
-application = Flask(__name__)
+app = Flask(__name__)
 
 # Download necessary NLTK data
 nltk.download('punkt')
@@ -96,12 +96,12 @@ def chatbot_response(user_input):
     return get_response(data['student'], predicted_tag)
 
 # Define route for home page
-@application.route('/')
+@app.route('/')
 def home():
     return render_template('index.html')
 
 # Define route for chatbot response
-@application.route('/ask', methods=['POST'])
+@app.route('/ask', methods=['POST'])
 def ask():
     user_input = request.form['user_input']
     response = chatbot_response(user_input)
@@ -109,5 +109,5 @@ def ask():
 
 # Change in app.run() for Render deployment
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 10000))  # Get port from environment or default to 5000
-    application.run(host='0.0.0.0', port=port, debug=False)
+    port = int(os.environ.get('PORT', 5000))  # Get port from environment or default to 5000
+    app.run(host='0.0.0.0', port=port, debug=False)
