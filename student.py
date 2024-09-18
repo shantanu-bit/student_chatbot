@@ -110,4 +110,8 @@ def ask():
 # Change in app.run() for Render deployment
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))  # Get port from environment or default to 5000
+<<<<<<< HEAD
     app.run(host='0.0.0.0', port=port, debug=False)
+=======
+    application.run(host='0.0.0.0', port=port, debug=False)
+>>>>>>> 10117bf77930251434d571edb6bba4aad9f021bf
